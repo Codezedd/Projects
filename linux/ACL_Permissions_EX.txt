@@ -1,0 +1,86 @@
+#!/bin/bash
+
+# Single line comment -- starts with a # symbol
+
+# Multiple line comment:
+<<COMMENT
+You can comment out multiple lines by enclosing them between the lines above and below.
+COMMENT
+
+<<COMMENT
+Format for commands:
+
+-- create a group
+sudo groupadd <name of group>
+
+-- assign user to group
+sudo usermod -a -G <name of group> <user>
+
+-- assign a group to a file
+sudo chgrp <name of group> <file>
+
+-- set permissions on a file
+sudo -u <user who owns file> chmod <symbolic or octal permission set> <file>
+
+COMMENT
+
+# create groups
+sudo groupadd billjohnson
+sudo groupadd billjones
+sudo groupadd billsantana
+
+sudo groupadd calendarcourt
+sudo groupadd calendarmeetingone
+sudo groupadd calendarmeetingtwo
+
+sudo groupadd clientpleading
+sudo groupadd clientcontract
+
+# assign users to groups
+sudo usermod -a -G billjohnson,calendarcourt,calendarmeetingone,calendarmeetingtwo,clientcontract bard
+sudo usermod -a -G billjohnson,clientpleading,calendarcourt,calendarmeetingtwo karen
+
+sudo usermod -a -G billjohnson,calendarcourt,calendarmeetingone,calendarmeetingtwo,clientcontract sam
+sudo usermod -a -G billjohnson,calendarcourt,calendarmeettingone,clientpleading kevin
+
+sudo usermod -a -G clientcontract,calendarcourt,calendarmeetingone,calendarmeetingtwo mary
+sudo usermod -a -G clientcontract,calendarcourt,calendarmeetingone,calendarmeetingtwo bob
+
+sudo usermod -a -G billjohnson,billjones,billsantana,clientpleading,calendarcourt,calendarmeetingone,calendarmeetingtwo tom
+sudo usermod -a -G billjohnson,billjones,billsantana,clientpleading,calendarcourt,calendarmeetingone,calendarmeetingtwo becky
+
+# assign a group to each file
+sudo chgrp billjohnson Johnson-Bill1.txt Johnson-Bill2.txt
+sudo chgrp billjones Jones-Bill1.txt Jones-Bill2.txt
+sudo chgrp billsantana Santana-Bill1.txt Santana-Bill2.txt
+
+sudo chgrp clientpleading Jones-Pleading1.txt Jones-Pleading2.txt Santana-Pleading1.txt Santana-Pleading2.txt
+sudo chgrp clientcontract Johnson-Contract1.txt Johnson-Contract2.txt
+
+sudo chgrp calendarcourt Jones-Court1.txt Jones-Court2.txt Santana-Court1.txt Santana-Court2.txt
+
+sudo chgrp calendarmeetingone Johnson-Meeting1.txt
+sudo chgrp calendarmeetingtwo Johnson-Meeting2.txt
+# set permissions on each file
+#Client Documents
+sudo -u bard chmod 0746 Jones-Pleading1.txt Jones-Pleading2.txt
+
+sudo -u bard chmod 0746 Santana-Pleading1.txt Santana-Pleading2.txt
+
+sudo -u karen chmod 0746 Johnson-Contract1.txt Johnson-Contract2.txt
+
+#Billings
+sudo -u kevin chmod 0760 Johnson-Bill1.txt Johnson-Bill2.txt
+
+sudo -u sam chmod 0706 Jones-Bill1.txt Jones-Bill2.txt
+
+sudo -u sam chmod 0706 Santana-Bill1.txt Santana-Bill2.txt
+
+#Calendar
+sudo -u bard chmod 0744 Jones-Court1.txt
+sudo -u mary chmod 0744 Jones-Court2.txt
+
+sudo -u bob chmod 0744 Santana-Court1.txt Santana-Court2.txt
+
+sudo -u karen chmod 0744 Johnson-Meeting1.txt
+sudo -u kevin chmod 0744 Johnson-Meeting2.txt
