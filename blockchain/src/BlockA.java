@@ -1,6 +1,6 @@
 /*--------------------------------------------------------
-1. Name / Date:
-Keven Zarate 11/4/2020
+1. Date:
+ 11/4/2020
 2. Java version used, if not the official version for the class:
     jdk1.8.0_181
 
